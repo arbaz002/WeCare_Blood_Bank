@@ -1,0 +1,34 @@
+{% extends 'accounts/main.html'%}
+
+{% load static %}
+
+{% block content %}
+
+<br>
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body text-center">
+
+		<p>Are you sure you want to delete the BloodBag with ID:{{bloodbag.bbid}}</p>
+
+		<form action="{% url 'delete_bloodbag' bloodbag.bbid %}" method="POST">
+			<a class='btn btn-warning'href="{% url 'admin_dashboard' %}">Cancel </a>
+
+			{% csrf_token %}
+			<input class='btn btn-danger' type="submit" name="Confirm">
+		</form>
+
+		</div>
+	</div>
+</div>		
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

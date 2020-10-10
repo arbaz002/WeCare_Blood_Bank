@@ -1,0 +1,99 @@
+{% extends 'accounts/main.html'%}
+
+{%block content%}
+
+<div class="row">
+	<div class="col-md-6">
+		<a class="btn btn-primary  btn-sm btn-block" href="{% url 'register_page_donor' %}">Register a New Donor</a>
+	</div>
+	<div class="col-md-6">
+		<a class="btn btn-primary  btn-sm btn-block" href="{% url 'register_page_hospital' %}">Register a New Hospital</a>
+	</div>
+</div>
+<hr>
+
+{% include 'accounts/status.html' %}
+
+<br>
+<br>
+<div class="row">
+	<div class="col-md-5">
+		<h5>Donation in Process</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'donation_history' %}">View Full List</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Profile</th>
+					<th>Donor ID</th>
+					<th>Donor Name</th>
+					<th>Blood Type</th>
+				</tr>
+				{% for i in od %}
+				<tr>
+					<td><a class="btn btn-sm btn-info" href="{% url 'donor_profile' i.donor.did %}">View</a></td>
+					<td>{{i.donor.did}}</td>
+					<td>{{i.donor.dname}}</td>
+					<td>{{i.bloodgroup}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Requests Pending: </h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'request_list' %}">View Full List</a>
+			<table class="table table-sm">
+				<tr>
+					<th>ID</th>
+					<th>Blood Type</th>
+					<th>Quantity(ml)</th>
+					<th>Hospital</th>
+				</tr>
+				{% for i in requests %}
+				<tr>
+					<td>{{i.rid}}</td>
+					<td>{{i.bloodgroup}}</td>
+					<td>{{i.amount}}</td>
+					<td>{{i.hospital.hname}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+</div>
+<br>
+<br>
+<div class='row justify-content-center'>
+	<div class="col-md-8">
+		<h5>Hospitals Associated: </h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'hospital_list' %}">View Full List</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Profile</th>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Phone</th>
+				</tr>
+				{% for i in hospitals %}
+				<tr>
+					<td><a class="btn btn-sm btn-info"href="{% url 'hospital_profile' i.hid %}">View</a></td>
+					<td>{{i.hid}}</td>
+					<td>{{i.hname}}</td>
+					<td>{{i.haddress}}</td>
+					<td>{{i.hphone}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>	
+<br>
+{%endblock%}

@@ -1,0 +1,32 @@
+from django.urls import path
+from . import views
+
+urlpatterns=[
+	path('',views.dashboard,name='admin_dashboard'),
+	path('my_dashboard_donor/',views.my_dashboard_donor,name='my_dashboard_donor'),
+	path('my_dashboard_hospital/',views.my_dashboard_hospital,name='my_dashboard_hospital'),
+	path('my_hospital_profile/',views.my_hospital_profile,name='my_hospital_profile'),
+	path('my_donor_profile/',views.my_donor_profile,name='my_donor_profile'),
+	path('donor_list/',views.donor_list,name='donor_list'),
+	path('hospital_list/',views.hospital_list,name='hospital_list'),
+	path('request_list/',views.request_list,name='request_list'),
+	path('blood_bag_list/',views.blood_bag_list,name='blood_bag_list'),
+	path('donation_history/',views.donation_history,name='donation_history'),
+	path('delete_donor/<str:pk>',views.delete_donor,name='delete_donor'),
+	path('delete_hospital/<str:pk>/',views.delete_hospital,name='delete_hospital'),
+	path('delete_bloodbag/<str:pk>/',views.delete_bloodbag,name='delete_bloodbag'),
+	path('delete_request/<str:pk>/',views.delete_request,name='delete_request'),
+	path('deliver_blood/<str:pk>/',views.deliver_blood,name='deliver_blood'),
+	path('donor_profile/<str:pk>/',views.donor_profile,name='donor_profile'),
+	path('hospital_profile/<str:pk>/',views.hospital_profile,name='hospital_profile'),
+	path('update_donor_profile/<str:pk>/',views.update_donor_profile,name='update_donor_profile'),
+	path('update_hospital_profile/<str:pk>',views.update_hospital_profile,name='update_hospital_profile'),
+	path('update_request/<str:pk>/',views.update_request,name='update_request'),
+	path('update_donation/<str:pk>/',views.update_donation,name='update_donation'),
+	path('login_page/',views.login_page,name='login_page'),
+	path('register_page_donor/',views.register_page_donor,name='register_page_donor'),
+	path('register_page_hospital/',views.register_page_hospital,name='register_page_hospital'),
+	path('create_blood_sample/<str:pk>/',views.create_blood_sample,name='create_blood_sample'),
+	path('create_requests/<str:pk>/',views.create_requests,name='create_requests'),
+	path('logout/',views.logoutUser,name='logout'),
+]

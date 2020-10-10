@@ -1,0 +1,44 @@
+{% extends 'accounts/main.html'%}
+
+{%block content%}
+
+{% load static %}
+
+{% include 'accounts/status_hospital.html' %}
+
+<link rel="stylesheet" type="text/css" href="{% static '\css\status_hospital.css' %}">
+
+<br>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<h3>Hospital Name: {{name}}</h3>
+		<br>
+		<div class="card card-body">
+			<table class="table">
+						<tr>
+							<th>Requests ID</th>
+							<th>Blood Group</th>
+							<th>Quantity(ml)</th>
+							<th>Made On</th>
+							<th>Comments</th>
+							<th>Status</th>
+						</tr>
+
+						{% for i in requests %}
+						<tr>	
+						<td>{{i.rid}}</td>
+						<td>{{i.bloodgroup}}</td>
+						<td>{{i.amount}}</td>
+						<td>{{i.reqdate}}</td>
+						<td>{{i.comments}}</td>
+						<td>{{i.status}}</td>
+						</tr>
+						{% endfor %}
+					</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

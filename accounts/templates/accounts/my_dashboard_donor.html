@@ -1,0 +1,41 @@
+{% extends 'accounts/main.html'%}
+
+{%block content%}
+
+{% load static %}
+
+{% include 'accounts/status_donor.html' %}
+
+<link rel="stylesheet" type="text/css" href="{% static '\css\status_donor.css' %}">
+<br>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<h3>Donor Name: {{name}}</h3>
+		<br>
+		<div class="card card-body">
+			<table class="table">
+						<tr>
+							<th>Blood ID</th>
+							<th>Blood Group</th>
+							<th>Quantity(ml)</th>
+							<th>Donate Date</th>
+							<th>Status</th>
+						</tr>
+						{% for i in donations %}
+						<tr>	
+						<td>{{i.bid}}</td>	
+						<td>{{i.bloodgroup}}</td>
+						<td>{{i.quantity}}</td>
+						<td>{{i.donatedate}}</td>
+						<td>{{i.status}}</td>
+						</tr>
+						{% endfor %}
+						
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

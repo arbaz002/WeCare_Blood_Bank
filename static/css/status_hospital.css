@@ -1,0 +1,20 @@
+		body{
+			background-color: #ebeff5;
+		}
+
+
+		#total-requests{
+			background-color: #056674;
+		}
+
+
+		#requests-fulfilled{
+			background-color: #056674;
+		}
+
+		#request-pending{
+			background-color: #056674;
+		}
+
+
+

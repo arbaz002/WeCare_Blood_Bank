@@ -1,0 +1,44 @@
+{% extends 'accounts/main.html'%}
+
+{%block content%}
+
+<br>
+
+<div class="row">
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>My Donor Profile</h5>
+			<hr>
+			<p>Donor ID: {{donor.did}}</p>
+			<p>Email: {{donor.demail}}</p>
+			<p>Address: {{donor.daddress}}</p>
+			<p>Weight(in kg): {{donor.dweight}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<br>
+			<hr>
+			<p>Phone: {{donor.dphone}}</p>
+			<p>Gender: {{donor.dgender}}</p>
+			<p>Date Of Birth: {{donor.dob}}</p>
+			<p>Age: {{donor.dage}}</p>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+		    <a class="btn btn-primary  btn-sm btn-block" href="{% url 'update_donor_profile' donor.did %}">Edit My Profile</a>
+		</div>
+	</div>
+	
+</div>
+<br>
+
+{%endblock%}

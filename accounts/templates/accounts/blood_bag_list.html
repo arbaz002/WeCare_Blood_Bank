@@ -1,0 +1,43 @@
+{% extends 'accounts/main.html'%}
+
+{%block content%}
+
+<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>All Blood Bags Data</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>ID</th>
+							<th>Blood Group</th>
+							<th>Quantity(ml)</th>
+							<th>Donate Date</th>
+							<th>Expiry Date</th>
+							<th>Request Received</th>
+							<th>Deliver</th>
+							<th>Discard</th>
+						</tr>
+
+						{% for i in bloodbags %}
+						<tr>	
+						<td>{{i.bbid}}</td>	
+						<td>{{i.bloodgroup}}</td>
+						<td>{{i.quantity}}</td>
+						<td>{{i.donatedate}}</td>
+						<td>{{i.expirydate}}</td>
+						<td>{{i.crequest}}</td>
+						<td><a class="btn btn-sm btn-info"href="{% url 'deliver_blood' i.bbid %}">Deliver</a></td>
+						<td><a class="btn btn-sm btn-danger"href="{% url 'delete_bloodbag' i.bbid %}">Discard</a></td>
+						</tr>
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+{%endblock%}

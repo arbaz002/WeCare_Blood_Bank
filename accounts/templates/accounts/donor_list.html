@@ -1,0 +1,54 @@
+{% extends 'accounts/main.html'%}
+
+{%block content%}
+
+<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>All Donors</h5>
+				</div>
+				<div class="card card-body">
+					<form method="get">
+					{{myfilter.form}}
+			    	<button class="btn btn-primary" type="submit">Search</button>
+			  	</form>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Profile</th>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Gender</th>
+							<th>Age</th>
+							<th>Address</th>
+							<th>Phone</th>
+							<th>Email</th>
+							<th>Update</th>
+							<th>Remove</th>
+						</tr>
+
+						{% for i in donors %}
+						<tr>
+						<td><a class="btn btn-sm btn-info"href="{% url 'donor_profile' i.did %}">View</a></td>	
+						<td>{{i.did}}</td>	
+						<td>{{i.dname}}</td>
+						<td>{{i.dgender}}</td>
+						<td>{{i.dage}}</td>
+						<td>{{i.daddress}}</td>
+						<td>{{i.dphone}}</td>
+						<td>{{i.demail}}</td>
+						<td><a class="btn btn-sm btn-info"href="{% url 'update_donor_profile' i.did %}">Update</a></td>
+						<td><a class="btn btn-sm btn-danger"href="{% url 'delete_donor' i.did %}">Delete</a></td>
+						</tr>
+						{% endfor %}
+						
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+{%endblock%}

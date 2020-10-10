@@ -1,0 +1,58 @@
+{% load static %}
+
+<style>
+  #navbar
+  {
+    background-color: #056674;
+  }
+
+  .msg1
+  {
+    color: #fddb3a;
+  }
+
+a:hover {
+  color: white;
+}
+
+
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light" id='navbar'>
+  <a class="navbar-brand" href="{% url 'admin_dashboard' %}" style="color: #fddb3a"><img src="{% static '/images/logo2.png' %}"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" style="color: #fddb3a" href="{% url 'admin_dashboard' %}">Dashboard <span class="sr-only"></span></a>
+      </li>
+      {% if request.user.is_staff %}
+      <li class="nav-item active">
+        <a class="nav-link" style="color: #fddb3a" href="{% url 'donor_list' %}">Donors<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" style="color: #fddb3a" href="{% url 'hospital_list' %}">Hospitals<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" style="color: #fddb3a" href="{% url 'blood_bag_list' %}">Blood Bags<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" style="color: #fddb3a" href="{% url 'donation_history' %}">Donation History<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" style="color: #fddb3a" href="{% url 'request_list' %}">Requests<span class="sr-only">(current)</span></a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" style="color: #fddb3a" href="{% url 'my_donor_profile' %}">My Profile</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+
+  <span class='msg' style="color:#fddb3a ">Hello, {{request.user}}  '</span>
+  <span class='msg1'><a href="{% url 'logout' %}">Logout</a></span>
+
+</nav>

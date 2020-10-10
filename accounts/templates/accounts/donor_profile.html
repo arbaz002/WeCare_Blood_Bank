@@ -1,0 +1,90 @@
+{% extends 'accounts/main.html'%}
+
+{%block content%}
+
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Donor: {{donor.dname}}</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'update_donor_profile' donor.did %}">Update Donor Details</a>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'create_blood_sample' donor.did %}">Create New Donation</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Donor ID: {{donor.did}}</p>
+			<p>Email: {{donor.demail}}</p>
+			<p>Address: {{donor.daddress}}</p>
+			<p>DOB: {{donor.dob}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<br>
+			<hr>
+			<p>Weight: {{donor.dweight}}</p>
+			<p>Phone: {{donor.dphone}}</p>
+			<p>Gender: {{donor.dgender}}</p>
+			<p>Age: {{donor.dage}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total Donation Count</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{c}}</h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+				{{myfilter.form}}
+    			<button class="btn btn-primary" type="submit">Search</button>
+  			</form>
+		</div>
+	</div>
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+			<div class="card card-body">
+			<table class="table">
+						<tr>
+							<th>Blood ID</th>
+							<th>Blood Group</th>
+							<th>Quantity(ml)</th>
+							<th>Donate Date</th>
+							<th>Status</th>
+							<th>Update</th>
+						</tr>
+						{% for i in donations %}
+						<tr>	
+						<td>{{i.bid}}</td>	
+						<td>{{i.bloodgroup}}</td>
+						<td>{{i.quantity}}</td>
+						<td>{{i.donatedate}}</td>
+						<td>{{i.status}}</td>
+						<td><a class="btn btn-sm btn-info"href="{% url 'update_donation' i.bid %}">Update</a></td>
+						</tr>
+						{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{%endblock%}

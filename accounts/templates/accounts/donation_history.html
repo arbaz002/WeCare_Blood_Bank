@@ -1,0 +1,46 @@
+{% extends 'accounts/main.html'%}
+
+{%block content%}
+
+<br>
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>All Donation History</h5>
+				</div>
+				<div class="card card-body">
+					<form method="get">
+						{{myfilter.form}}
+		    			<button class="btn btn-primary" type="submit">Search</button>
+		  			</form>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>ID</th>
+							<th>Donor Name</th>
+							<th>Blood Group</th>
+							<th>Quantity(ml)</th>
+							<th>Donate Date</th>
+							<th>Status</th>
+							<th>Update</th>
+						</tr>
+						{% for i in donationhistory %}
+						<tr>	
+						<td>{{i.bid}}</td>	
+						<td>{{i.donor.dname}}</td>
+						<td>{{i.bloodgroup}}</td>
+						<td>{{i.quantity}}</td>
+						<td>{{i.donatedate}}</td>
+						<td>{{i.status}}</td>
+						<td><a class="btn btn-sm btn-info"href="{% url 'update_donation' i.bid %}">Update</a></td>
+						</tr>
+						{% endfor %}
+						
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+{%endblock%}

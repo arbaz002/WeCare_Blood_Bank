@@ -1,0 +1,87 @@
+{% extends 'accounts/main.html'%}
+
+{%block content%}
+
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Hospital: {{hospital.hname}}</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'update_hospital_profile' hospital.hid %}">Update Hospital Details</a>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'create_requests' hospital.hid %}">Create New Requests</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Hospital ID: {{hospital.hid}}</p>
+			<p>Email: {{hospital.hemail}}</p>
+			<p>Address: {{hospital.haddress}}</p>
+			<p>Phone: {{hospital.hphone}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total Requests Count</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{count_request}}</h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+			{{myfilter.form}}
+	    	<button class="btn btn-primary" type="submit">Search</button>
+	  	</form>
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table">
+						<tr>
+							<th>ID</th>
+							<th>Hospital Name</th>
+							<th>Blood Group</th>
+							<th>Quantity(ml)</th>
+							<th>Received On</th>
+							<th>Comments</th>
+							<th>Status</th>
+							<th>Update</th>
+						</tr>
+
+						
+						{% for i in requests %}
+						<tr>	
+						<td>{{i.rid}}</td>
+						<td>{{i.hospital.hname}}</td>
+						<td>{{i.bloodgroup}}</td>
+						<td>{{i.amount}}</td>
+						<td>{{i.reqdate}}</td>
+						<td>{{i.comments}}</td>
+						<td>{{i.status}}</td>
+						<td><a class="btn btn-sm btn-info"href="{% url 'update_request' i.rid %}">Update</a></td>
+						</tr>
+						{% endfor %}
+						
+					</table>
+		</div>
+	</div>
+</div>
+
+{%endblock%}
